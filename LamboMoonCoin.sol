@@ -37,7 +37,7 @@ contract Token {
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
 }
-*
+
 contract StandardToken is Token {
 
     function transfer(address _to, uint256 _value) returns (bool success) {
