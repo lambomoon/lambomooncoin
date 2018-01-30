@@ -36,6 +36,9 @@ contract Token {
     event Transfer(address indexed _from, address indexed _to, uint256 _value);
     event Approval(address indexed _owner, address indexed _spender, uint256 _value);
 
+    /* This notifies clients about the amount burnt */
+    //event Burn(address indexed from, uint256 value);
+
 }
 
 contract StandardToken is Token {
@@ -57,16 +60,14 @@ contract StandardToken is Token {
     function transferFrom(address _from, address _to, uint256 _value) returns (bool success) {
         //same as above. Replace this line with the following if you want to protect against wrapping uints.
         //if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value && balances[_to] + _value > balances[_to]) {
-        if (balances[_from] >= _value && allowed[_from][msg.sender] >= _value && _value > 0) {
+        if (balances[_from] >= _value + cfee && allowed[_from][msg.sender] >= _value + cfee && _value > 0) {
             balances[_to] += _value;
-            balances[_from] -= _value;
-            allowed[_from][msg.sender] -= _value;
+            balances[_from] -= _value + cfee;
+            allowed[_from][msg.sender] -= _value + cfee;
             Transfer(_from, _to, _value);
+            Transfer(_from, cvault, cfee);
             return true;
         } else { return false; }
-        +
-
-        3
     }
 
     function balanceOf(address _owner) constant returns (uint256 balance) {
@@ -98,19 +99,21 @@ contract LamboMoonCoin is StandardToken {
     uint256 public icoPrice;               // Setup ICO price. 1 ETH will get you this amount of LAMBO.
     uint256 public totalEthInWei;         // WEI is the smallest unit of ETH (the equivalent of cent in USD or satoshi in BTC). We'll store the total ETH raised via our ICO here.  
     address public fundsWallet;           // Where should the raised ETH go?
+    address public cvault;                // Charity vault wallet address
+    uint256 public cfee;                  // Charity fee
 
-    /* This notifies clients about the amount burnt */
-    event Burn(address indexed from, uint256 value);
 
     /* Main Variable definitions */
     function LamboMoonCoin() {
-        balances[msg.sender] = 1000000000; 
-        totalSupply = 1000000000;            
+        balances[msg.sender] = 2500000000; 
+        totalSupply = 2500000000;            
         name = "LamoMoonCoin";                    
         decimals = 2;                                          
         symbol = "LAMBO";                        
         icoPrice = 25000;                      
-        fundsWallet = msg.sender;                                    
+        fundsWallet = msg.sender; 
+        cvault = 0x2444F91C1e07dB74Dd58943eeA728409eb67b70c;
+        cfee = 100;                                   
     }
 
     /* ICO related payment. If someone sends ETH to this address, it'll send LAMBO to the sender of ETH. */
@@ -130,6 +133,7 @@ contract LamboMoonCoin is StandardToken {
         fundsWallet.transfer(msg.value);                               
     }
 
+/*
     function burn(uint256 _value) returns (bool success) {
         if (balanceOf[msg.sender] < _value) throw; // Check if the sender has enough
         balanceOf[msg.sender] -= _value; // Subtract from the sender
@@ -146,6 +150,7 @@ contract LamboMoonCoin is StandardToken {
         Burn(_from, _value);
         return true;
     }
+*/
 
     // Approves and then calls the receiving contract
     function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
