@@ -112,8 +112,8 @@ contract LamboMoonCoin is StandardToken {
         symbol = "LAMBO";                        
         icoPrice = 25000;                      
         fundsWallet = msg.sender; 
-        cvault = 0x2444F91C1e07dB74Dd58943eeA728409eb67b70c;
-        cfee = 100;                                   
+        cvault = 0x2444F91C1e07dB74Dd58943eeA728409eb67b70c; // Charity Vault Wallet Address
+        cfee = 100;     // Charity fee, with 2 decimals this should equal 1 token trx fee
     }
 
     /* ICO related payment. If someone sends ETH to this address, it'll send LAMBO to the sender of ETH. */
