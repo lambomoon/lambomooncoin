@@ -1,3 +1,12 @@
+/*
+*   WEBSITE:    https://LamboMoon.org
+*   TELEGRAM GROUP:     https://t.me/lambomoonorg
+*   SUBREDDIT:      https://reddit.com/r/lambomooncoin
+*
+*
+*/
+
+
 
 pragma solidity ^0.4.4;
 
