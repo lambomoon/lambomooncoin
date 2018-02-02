@@ -10,9 +10,8 @@ This includes when and how our next ICO (Initial Coin Offering) will be taking p
 
 - This is a meme coin. It is not meant to be taken seriously.
 - It is being created as-to the current state of the Crypto Market. All these kids coming in and putting their money behind shitcoins hoping they moon within the next month so they can buy a Lambo.
-- It doesn't have a main purpose or real tech behind it and probably will never have either.
-- However, the community controls its fate.
-- If it does go viral and makes an impact: it will at least support various charities. See 'Charity Vault' below for more information.
+- The only real purpose behind this coin/token is the fact it features a "charity vault". 
+- However, the community controls its fate. So anything is possible, the above does not mean it wont be valuable ever.
 
 
 ### Charity Vault
@@ -36,11 +35,6 @@ Please contact us via our subreddit, telegram group or twitter (find the links b
 
 
 ## Credit Where Credit Is Due
-
-### TokenFactory
-
-For the initial base solidity code used for this project.
-- https://github.com/ConsenSys/Token-Factory/
 
 
 ### Etherum Foundation
