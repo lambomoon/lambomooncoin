@@ -49,3 +49,4 @@ For creating this meme token.
 - Website: https://LamboMoon.org/
 - Telegram Channel: https://t.me/lambomoonorg
 - Subreddit: https://reddit.com/r/lambomooncoin
+- Twitter: https://twitter.com/lambomooncoin
